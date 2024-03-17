@@ -2,9 +2,9 @@
   "name": "password-generator-api",
   "version": "1.0.0",
   "description": "This is Node API generate Strong Passwords.",
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "node index.js"
   },
   "keywords": [
     "password",
