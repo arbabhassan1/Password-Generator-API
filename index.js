@@ -1,5 +1,5 @@
 const express = require("express");
-// var generator = require("generate-password");
+var generator = require("generate-password");
 
 const app = express();
 
@@ -10,8 +10,7 @@ app.listen(port, () => {
   console.log("Server is Running on active port no:" + port);
 });
 
-app.post("/password", (req, res) => {
-  console.log(req.body);
+app.get("/password", (req, res) => {
   let {
     length,
     numbers,
@@ -20,10 +19,27 @@ app.post("/password", (req, res) => {
     symbols,
     excludeSimilarCharacters,
     strict,
-  } = req.body;
+  } = req.query;
 
-  res.json(req.body);
-  console.log(length);
+  var password = generator.generate({
+    length: length,
+    numbers: numbers,
+    uppercase: uppercase,
+    lowercase: lowercase,
+    symbols: symbols,
+    excludeSimilarCharacters: excludeSimilarCharacters,
+    strict: strict,
+  });
+
+  const resData = {
+    password: password,
+    length: length,
+    API: "Password Generator API",
+    Developer: "Arbab Hassan",
+    contact: "https://bit.ly/arbab-hassan",
+  };
+
+  res.json(resData);
 });
 
 app.get("*", (req, res) => {
