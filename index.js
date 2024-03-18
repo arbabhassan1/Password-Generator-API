@@ -3,7 +3,7 @@ const cors = require("cors");
 var generator = require("generate-password");
 
 const app = express();
-app.use(app.cors());
+app.use(cors());
 const port = 8686;
 app.use(express.urlencoded({ extended: true }));
 
